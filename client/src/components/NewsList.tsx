@@ -20,6 +20,9 @@ export default function NewsList({ items, total, page, pageSize, onPage }: Props
           </div>
         </div>
       ))}
+      {items.length === 0 && (
+        <div style={{ padding: '2rem', textAlign: 'center', color: '#666' }}>暂无数据</div>
+      )}
       <div style={{ marginTop: '1rem' }}>
         {Array.from({ length: totalPages }, (_, i) => (
           <button key={i} onClick={() => onPage(i + 1)} disabled={page === i + 1}>
