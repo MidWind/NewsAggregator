@@ -165,3 +165,4 @@
 /home/ubuntu/kk/NewsAggregator/src/NewsAggregator.Api/obj/Debug/net8.0/NewsAggregator.Api.pdb
 /home/ubuntu/kk/NewsAggregator/src/NewsAggregator.Api/obj/Debug/net8.0/NewsAggregator.Api.genruntimeconfig.cache
 /home/ubuntu/kk/NewsAggregator/src/NewsAggregator.Api/obj/Debug/net8.0/ref/NewsAggregator.Api.dll
+/home/ubuntu/kk/NewsAggregator/src/NewsAggregator.Api/obj/Debug/net8.0/NewsAggregator.Api.sourcelink.json

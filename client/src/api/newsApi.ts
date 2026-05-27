@@ -1,7 +1,7 @@
 import axios from 'axios';
 import type { SearchParams } from '../types';
 
-const api = axios.create({ baseURL: '/api' });
+const api = axios.create({ baseURL: '/news/api' });
 
 export const searchNews = (params: SearchParams) =>
   api.get('/news/search', { params }).then(r => r.data).catch(err => {
