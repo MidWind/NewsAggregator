@@ -16,6 +16,7 @@ builder.Services.AddHostedService<NewsCollectorHostedService>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
@@ -26,4 +27,5 @@ using (var scope = app.Services.CreateScope())
 }
 
 app.MapGet("/", () => "NewsAggregator API");
+app.MapControllers();
 app.Run();
