@@ -26,10 +26,12 @@ public class NewsController : ControllerBase
         int page = 1,
         int pageSize = 20)
     {
+        page = Math.Max(1, page);
+        pageSize = Math.Clamp(pageSize, 1, 100);
         var query = _db.NewsItems.AsQueryable();
 
         if (!string.IsNullOrWhiteSpace(keyword))
-            query = query.Where(n => n.Title.Contains(keyword));
+            query = query.Where(n => n.Title.ToLower().Contains(keyword.ToLower()));
 
         if (!string.IsNullOrWhiteSpace(platform))
             query = query.Where(n => n.Platform == platform);
@@ -54,6 +56,8 @@ public class NewsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetLatest(int page = 1, int pageSize = 20)
     {
+        page = Math.Max(1, page);
+        pageSize = Math.Clamp(pageSize, 1, 100);
         var total = await _db.NewsItems.CountAsync();
         var data = await _db.NewsItems
             .OrderByDescending(n => n.PublishDate)
@@ -66,9 +70,11 @@ public class NewsController : ControllerBase
     }
 
     [HttpPost("trigger-scrape")]
-    public async Task<IActionResult> TriggerScrape([FromServices] NewsCollectorHostedService service)
+    public async Task<IActionResult> TriggerScrape(
+        [FromServices] NewsCollectorHostedService service,
+        CancellationToken cancellationToken)
     {
-        await service.RunScrapeAsync(default);
+        await service.RunScrapeAsync(cancellationToken);
         return Ok("Scrape triggered");
     }
 }
