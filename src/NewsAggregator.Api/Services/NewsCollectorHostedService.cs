@@ -5,16 +5,13 @@ namespace NewsAggregator.Api.Services;
 
 public class NewsCollectorHostedService : BackgroundService
 {
-    private readonly IServiceScopeFactory _scopeFactory;
     private readonly ILogger<NewsCollectorHostedService> _logger;
     private readonly ScraperService _scraperService;
 
     public NewsCollectorHostedService(
-        IServiceScopeFactory scopeFactory,
         ILogger<NewsCollectorHostedService> logger,
         ScraperService scraperService)
     {
-        _scopeFactory = scopeFactory;
         _logger = logger;
         _scraperService = scraperService;
     }
@@ -33,7 +30,14 @@ public class NewsCollectorHostedService : BackgroundService
             _logger.LogInformation("Next scrape at {NextRun}", nextRun);
             await Task.Delay(delay, stoppingToken);
 
+            try
+        {
             await RunScrapeAsync(stoppingToken);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error during scheduled scrape");
+        }
         }
     }
 
