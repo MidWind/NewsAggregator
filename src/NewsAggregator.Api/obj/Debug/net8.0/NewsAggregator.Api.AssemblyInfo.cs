@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NewsAggregator.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e7a5f2e4a6ff304ff5a0cfc48246a9e94783bbf2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+668cd88880c6b27b6f4f957e9f3a9a27353e56d9")]
 [assembly: System.Reflection.AssemblyProductAttribute("NewsAggregator.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NewsAggregator.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

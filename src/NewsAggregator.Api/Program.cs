@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using NewsAggregator.Api.Data;
+using NewsAggregator.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,8 @@ if (!Directory.Exists(dbDir)) Directory.CreateDirectory(dbDir);
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite($"Data Source={dbPath}"));
+
+builder.Services.AddSingleton<ScraperService>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
